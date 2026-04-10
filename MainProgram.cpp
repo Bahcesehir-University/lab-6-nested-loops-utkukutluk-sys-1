@@ -45,7 +45,9 @@ int main() {
     // TODO: Write a for loop that counts from 5 down to 1
     //       Print each number followed by a space, then "Go!" on a new line.
 
-
+for (int i=1;i<=5;i++) {
+    cout << i << endl;
+}
     cout << endl;
 
     // -----------------------------------------------------------------------
@@ -60,6 +62,11 @@ int main() {
     int n;
     cout << "Enter a positive integer: ";
     cin >> n;
+    int sum=0;
+    for (int i=1;i<=n;i++) {
+        sum+=i;
+    }
+    cout << sum << endl;
 
     // TODO: Use a loop to calculate the sum of 1 + 2 + ... + N
     //       Store the result in a variable called 'sum' and print it.
@@ -109,8 +116,13 @@ int main() {
     // TODO: Create nested loops (outer: 4 iterations, inner: 5 iterations).
     //       Use a counter variable to count how many times the inner body runs.
     //       Print the total count.
-
-
+int count=0;
+for (int i=1;i<=4;i++) {
+    for (int j=1;j<=5;j++) {
+        count ++;
+    }
+}
+    cout << "Total Iterations:"<<count << endl;
     cout << endl;
 
     // -----------------------------------------------------------------------
@@ -138,7 +150,12 @@ int main() {
 
     // TODO: Loop through the 'data' array.
     //       When you find the first negative number, print it and break.
-
+for (int i=1;i<dataSize;i++) {
+    if (data[i]<0) {
+        cout<<data[i]<<endl;
+        break;
+    }
+}
 
     cout << endl;
 
@@ -166,6 +183,12 @@ int main() {
     //       Use 'continue' to skip multiples of 3.
     //       Print the remaining numbers on one line separated by spaces.
 
+    for (int i=1;i<=20;i++) {
+        if (i %3 ==0) {
+            continue;
+        }
+        cout << i << endl;
+    }
 
     cout << endl << endl;
 
@@ -197,7 +220,12 @@ int main() {
 
     // TODO: Write nested loops to produce the multiplication table above.
 
-
+for (int i=1;i<=5;i++) {
+    for (int j=1;j<=5;j++) {
+        cout << i*j<<" ";
+    }
+    cout << endl;
+}
     cout << endl;
 
     // -----------------------------------------------------------------------
@@ -222,7 +250,12 @@ int main() {
     //       Outer loop: controls the row (1 to height)
     //       Inner loop: prints '*' characters for that row
 
-
+for (int i=1;i<=height;i++) {
+    for (int j=0;j<i;j++) {
+        cout << "* ";
+    }
+    cout << endl;
+}
     cout << endl;
 
     // -----------------------------------------------------------------------
@@ -252,7 +285,14 @@ int main() {
     //         - Accumulate the sum for that row
     //       After inner loop: print "-> Sum = " and the row's sum
 
-
+for (int i=1;i<=rows;i++) {
+    int sum1=0;
+    for (int j=1;j<=i;j++) {
+        cout<<j<<" ";
+        sum1+=j;
+    }
+    cout<<"-> Sum ="<<sum1<<endl;
+}
     cout << endl;
 
     // -----------------------------------------------------------------------
@@ -288,7 +328,19 @@ int main() {
     //   Hint: You will need a boolean flag (e.g., 'found') to track whether
     //         the value was found across both loops, because 'break' only
     //         exits the inner loop.
-
+bool found=false;
+for (int i=0;i<2;i++) {
+    for (int j=0;j<3;j++) {
+        if (grid[i][j]==target) {
+            cout<<"Found "<<target<<" at row "<<i+1<<" ,column "<<j+1<<endl;
+            found=true;
+            break;
+        }
+    }
+}
+    if (found==false) {
+        cout<<"Not found!"<<endl;
+    }
 
     cout << endl;
 
@@ -308,6 +360,17 @@ int main() {
 
     int scores[] = {85, 42, 91, 37, 78, 65, 29, 88, 95, 44};
     int scoresSize = 10;
+    double sum2=0;
+    double count2=0;
+    for (int i=0;i<scoresSize;i++) {
+        if (scores[i]<50) {
+            continue;
+        }
+        sum2+=scores[i];
+        count2++;
+    }
+    double avarage=sum2/count2;
+    cout<<"Avarage:"<< avarage<<endl;
 
     // TODO: Loop through the 'scores' array.
     //       Use 'continue' to skip any score below 50.
@@ -337,10 +400,22 @@ int main() {
     int num;
     cout << "Enter a number (>= 2): ";
     cin >> num;
+    bool prime=true;
 
     // TODO: Use a loop from 2 to num-1 to check for divisors.
     //       If you find a divisor, set a flag and break.
     //       After the loop, print whether the number is prime or not.
+
+for (int i=2;i<num;i++) {
+    if (num%i==0) {
+        cout<<"Output:"<<num<<" is not prime.";
+        prime=false;
+        break;
+    }
+}
+    if (prime==true) {
+        cout<<"Output: "<<num<<" is prime."<<endl;
+    }
 
 
     cout << endl;
@@ -382,6 +457,35 @@ int main() {
     //       or a single clever loop — your choice.
 
 
+
+        int mid = diamond / 2;
+
+        // Upper part 
+        for (int i = 0; i <= mid; i++) {
+            // spaces
+            for (int j = 0; j < mid - i; j++) {
+                cout << " ";
+            }
+            // stars
+            for (int j = 0; j < 2 * i + 1; j++) {
+                cout << "*";
+            }
+            cout << endl;
+        }
+
+        // Lower part
+        for (int i = mid - 1; i >= 0; i--) {
+            // spaces
+            for (int j = 0; j < mid - i; j++) {
+                cout << " ";
+            }
+            // stars
+            for (int j = 0; j < 2 * i + 1; j++) {
+                cout << "*";
+            }
+            cout << endl;
+        }
+
     cout << endl;
 
     // -----------------------------------------------------------------------
@@ -401,14 +505,29 @@ int main() {
 
     int correctPassword = 1234;
 
+
     // TODO: Implement the login attempt loop.
     //       - Use a for loop with 3 iterations (attempts).
     //       - Ask for the password each time.
     //       - If correct, print "Access granted!" and break.
     //       - If wrong, print remaining attempts.
     //       - After the loop, if not successful, print "Account locked."
+bool successfull=false;
+for (int i=2;i>=0;i--) {
+    int password;
+    cout<<"Enter a Password: ";
+    cin>>password;
 
-
+    if (password==correctPassword) {
+        cout<<"Access granted!"<<endl;
+        successfull=true;
+        break;
+    }
+    cout<<"You have "<<i<<" attempts left."<<endl;
+}
+   if (successfull==false) {
+       cout<<"Account locked."<<endl;
+   }
     cout << endl;
 
     // ========================================================================
